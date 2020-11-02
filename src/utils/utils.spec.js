@@ -11,7 +11,6 @@ describe('trimString util', () => {
         expect(trimString("           ", 4)).toBe('           ');
         expect(trimString(null, 4)).toBeNull();
         expect(trimString(undefined, 4)).toBeUndefined();
-        expect(trimString(12345, )).toBe("1234...");
     });
 });
 
@@ -32,14 +31,14 @@ describe('getIsValidNumber util', () => {
 
 describe('removeObjPropImmutably util', () => {
     it('positive removing cases', () => {
-        expect(removeObjPropImmutably({a: 1, b: 2}, 'b')).toMatchObject({a: 1});
-        expect(removeObjPropImmutably({a: () => {}, b: 2}, 'a')).toMatchObject({b: 2});
+        expect(removeObjPropImmutably({ a: 1, b: 2 }, 'b')).toMatchObject({ a: 1 });
+        expect(removeObjPropImmutably({ a: () => {}, b: 2 }, 'a')).toMatchObject({ b: 2 });
     });
     it('negative checking cases', () => {
         const notValidObject = [undefined, null, []]
         for (let int = 0; int < notValidObject.length; int++) {
             const element = notValidObject[int];
-            expect(removeObjPropImmutably(notValidObject[int])).toMatchObject({}); 
+            expect(removeObjPropImmutably(notValidObject[int])).toMatchObject({});
         }
     });
 });
